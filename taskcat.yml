@@ -1,0 +1,15 @@
+project:
+  name: taskcat_test_run
+  regions: 
+    - ap-southeast-1
+tests:
+    vpc:
+      template: modules/vpc.yaml
+    natgateway:
+      template: modules/nat_gateway.yaml
+    routetable:
+      template: modules/route_tables.yaml
+    securitygroups:
+      template: modules/security_groups.yaml
+    sec2:
+      template: modules/ec2_instances.yaml

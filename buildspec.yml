@@ -3,14 +3,16 @@ version: 0.2
 phases:
   install:
     commands:
-      - pip install cfn-lint
+      - pip install cfn-lint taskcat
   pre_build:
+  name: testing
     commands:
       - echo Pre-build started on `date`
   build:
     commands:
       - echo Build started on `date`
-      - cfn-lint modules/*.yaml || true
+      - cfn-lint module/*.yaml || true
+      - taskcat test run -c taskcat.yml
   post_build:
     commands:
       - echo Build completed on `date`
