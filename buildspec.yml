@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - pip install cfn-lint
+  pre_build:
+    commands:
+      - echo Pre-build started on `date`
+  build:
+    commands:
+      - echo Build started on `date`
+      - cfn-lint module/*.yaml
+  post_build:
+    commands:
+      - echo Build completed on `date`
