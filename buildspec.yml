@@ -5,7 +5,6 @@ phases:
     commands:
       - pip install cfn-lint taskcat
   pre_build:
-  name: testing
     commands:
       - echo Pre-build started on `date`
   build:
