@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources:
+  PublicInstance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      InstanceType: "t2.micro"
+      ImageId: "ami-047126e50991d067b" 
+      SubnetId: !ImportValue PublicSubnetId
+      SecurityGroupIds:
+        - !ImportValue PublicInstanceSecurityGroupId
+      KeyName: "Lab 1" 
+      Tags:
+        - Key: "Name"
+          Value: "PublicEC2Instance_lab_1"
+
+  PrivateInstance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      InstanceType: "t2.micro"
+      ImageId: "ami-047126e50991d067b" 
+      SubnetId: !ImportValue PrivateSubnetId
+      SecurityGroupIds:
+        - !ImportValue PrivateInstanceSecurityGroupId
+      KeyName: "Lab 1"  
+      Tags:
+        - Key: "Name"
+          Value: "PrivateEC2Instance_lab_1"
+
+Outputs:
+  PublicInstanceId:
+    Value: !GetAtt PublicInstance.PublicIp
+    Export:
+      Name: PublicInstanceId
+  PrivateInstanceId:
+    Value: !Ref PrivateInstance
+    Export:
+      Name: PrivateInstanceId
+  PublicInstancePublicIp:
+    Value: !GetAtt PublicInstance.PublicIp
+    Export:
+      Name: PublicInstancePublicIp
+  PrivateInstancePrivateIp:
+    Value: !GetAtt PrivateInstance.PrivateIp
+    Export:
+      Name: PrivateInstancePrivateIp
