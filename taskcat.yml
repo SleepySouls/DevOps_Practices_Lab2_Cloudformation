@@ -2,7 +2,6 @@ project:
   name: taskcat-test-run
   regions: 
     - ap-southeast-1
-  ignore_failures: true
   
 tests:
     vpc:
