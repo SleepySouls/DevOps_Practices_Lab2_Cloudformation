@@ -11,7 +11,7 @@ phases:
     commands:
       - echo Build started on `date`
       - cfn-lint modules/*.yaml || true
-      - taskcat test run --input-file taskcat.yml
+      - taskcat lint --input-file taskcat.yml
   post_build:
     commands:
       - echo Build completed on `date`
