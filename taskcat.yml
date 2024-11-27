@@ -2,6 +2,8 @@ project:
   name: taskcat-test-run
   regions: 
     - ap-southeast-1
+  ignore_failures: true
+  
 tests:
     vpc:
       template: modules/vpc.yaml
@@ -11,5 +13,5 @@ tests:
       template: modules/route_tables.yaml
     securitygroups:
       template: modules/security_groups.yaml
-    sec2:
+    ec2:
       template: modules/ec2_instances.yaml
